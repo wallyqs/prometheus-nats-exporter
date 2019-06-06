@@ -18,7 +18,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/nats-io/gnatsd/logger"
+	"github.com/nats-io/nats-server/v2/logger"
 )
 
 // Logging in the collector

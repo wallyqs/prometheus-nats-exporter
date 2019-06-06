@@ -20,9 +20,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/nats-io/gnatsd/logger"
-	"github.com/nats-io/gnatsd/server"
-	"github.com/nats-io/go-nats"
+	"github.com/nats-io/nats-server/v2/logger"
+	"github.com/nats-io/nats-server/v2/server"
+	"github.com/nats-io/nats.go"
 	nss "github.com/nats-io/nats-streaming-server/server"
 )
 
