@@ -52,6 +52,7 @@ type NATSExporterOptions struct {
 	GetReplicatorVarz    bool
 	GetStreamingChannelz bool
 	GetStreamingServerz  bool
+	GetJsz               bool
 	RetryInterval        time.Duration
 	CertFile             string
 	KeyFile              string
@@ -172,7 +173,7 @@ func (ne *NATSExporter) initializeCollectors() error {
 
 	if !opts.GetConnz && !opts.GetRoutez && !opts.GetSubz && !opts.GetVarz &&
 		!opts.GetGatewayz && !opts.GetStreamingChannelz &&
-		!opts.GetStreamingServerz && !opts.GetReplicatorVarz {
+		!opts.GetStreamingServerz && !opts.GetReplicatorVarz && !opts.GetJsz {
 		return fmt.Errorf("no collectors specfied")
 	}
 	if opts.GetReplicatorVarz && opts.GetVarz {
@@ -201,6 +202,9 @@ func (ne *NATSExporter) initializeCollectors() error {
 	}
 	if opts.GetReplicatorVarz {
 		ne.createCollector(collector.ReplicatorSystem, "varz")
+	}
+	if opts.GetJsz {
+		ne.createCollector(collector.JetStreamSystem, "jsz")
 	}
 	return nil
 }
